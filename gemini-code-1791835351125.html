@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Une preuve d'amour pour Halimé 💖</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffd1dc 0%, #ffe6eb 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #5a3d46;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(220, 120, 150, 0.2);
+      border: 2px solid #ffb6c1;
+      text-align: center;
+      position: relative;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.6s ease-in-out forwards;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn {
+      background: #ff6b8b;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 107, 139, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #ff4770;
+      transform: translateY(-2px);
+    }
+
+    .lock-header {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .photo-frame {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      border: 4px solid #ff8fa3;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .code-display {
+      font-size: 2rem;
+      letter-spacing: 12px;
+      margin: 20px 0;
+      min-height: 40px;
+      color: #ff4770;
+    }
+
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    .key {
+      background: #ffffff;
+      border: 2px solid #ffccd5;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ff5c8a;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .key:active {
+      background: #ffccd5;
+      transform: scale(0.95);
+    }
+
+    .gifts-grid {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .gift-card {
+      background: #fff0f3;
+      border: 2px dashed #ff8fa3;
+      border-radius: 18px;
+      padding: 25px;
+      width: 180px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .gift-card:hover {
+      transform: translateY(-8px);
+      background: #ffe3e8;
+    }
+
+    .gift-icon {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+    }
+
+    .tulips-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .tulips-img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 16px;
+    }
+
+    .notes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .note-item {
+      background: #fff;
+      padding: 10px 15px;
+      border-radius: 12px;
+      border-left: 4px solid #ff4770;
+      font-size: 0.95rem;
+      text-align: left;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .player-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 350px;
+      margin: 20px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .vinyl {
+      width: 120px;
+      height: 120px;
+      background: #222;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      border: 10px solid #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: spin 8s linear infinite;
+    }
+
+    .vinyl-center {
+      width: 35px;
+      height: 35px;
+      background: #ff4770;
+      border-radius: 50%;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .letter-paper {
+      background: #fffdf9;
+      background-image: repeating-linear-gradient(#fffdf9 0px, #fffdf9 24px, #e8d8ce 25px);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: left;
+      line-height: 25px;
+      font-family: 'Georgia', serif;
+      font-size: 1rem;
+      color: #4a3b32;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      max-height: 320px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- PAGE 1 : CODE SECRET -->
+    <div id="page-lock" class="page active">
+      <div class="lock-header">
+        <!-- Vos photos recadrées : esaie.jpg et halime.jpg -->
+        <img class="photo-frame" src="esaie.jpg" alt="Esaïe">
+        <img class="photo-frame" src="halime.jpg" alt="Halimé">
+      </div>
+      <h2>Entrez notre code d'amour secret 🩷</h2>
+      <div id="code-display" class="code-display">____</div>
+      <div class="keypad">
+        <button class="key" onclick="pressKey('1')">1</button>
+        <button class="key" onclick="pressKey('2')">2</button>
+        <button class="key" onclick="pressKey('3')">3</button>
+        <button class="key" onclick="pressKey('4')">4</button>
+        <button class="key" onclick="pressKey('5')">5</button>
+        <button class="key" onclick="pressKey('6')">6</button>
+        <button class="key" onclick="pressKey('7')">7</button>
+        <button class="key" onclick="pressKey('8')">8</button>
+        <button class="key" onclick="pressKey('9')">9</button>
+        <button class="key" onclick="clearCode()">C</button>
+        <button class="key" onclick="pressKey('0')">0</button>
+        <button class="key" onclick="checkCode()">❤️</button>
+      </div>
+    </div>
+
+    <!-- PAGE 2 : MENU DES SURPRISES -->
+    <div id="page-menu" class="page">
+      <h2>Bienvenue Halimé, tu as réussi ! 💕</h2>
+      <p style="margin-top: 8px;">De la part d'Esaïe, choisis ta surprise :</p>
+      <div class="gifts-grid">
+        <div class="gift-card" onclick="showPage('page-tulips')">
+          <div class="gift-icon">🌷</div>
+          <h3>Fleurs</h3>
+        </div>
+        <div class="gift-card" onclick="showPage('page-playlist')">
+          <div class="gift-icon">🎵</div>
+          <h3>Musique</h3>
+        </div>
+        <div class="gift-card" onclick="showPage('page-letter')">
+          <div class="gift-icon">💌</div>
+          <h3>Lettre</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 3 : BOUQUET DE FLEURS & MOTS DOUX -->
+    <div id="page-tulips" class="page">
+      <h2>Un bouquet rien que pour toi 🌷</h2>
+      <div class="tulips-layout">
+        <img class="tulips-img" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=80" alt="Bouquet de fleurs">
+        <div class="notes-list">
+          <div class="note-item">✨ Halimé, tu fais épanouir mon cœur.</div>
+          <div class="note-item">✨ La vie est tellement plus belle à tes côtés.</div>
+          <div class="note-item">✨ Chaque moment avec toi est magique.</div>
+          <div class="note-item">✨ Je t'aime du plus profond de mon âme.</div>
+        </div>
+      </div>
+      <button class="btn" onclick="showPage('page-menu')">← Retour au menu</button>
+    </div>
+
+    <!-- PAGE 4 : PLAYLIST / MUSIQUE -->
+    <div id="page-playlist" class="page">
+      <h2>Notre Chanson 🎶</h2>
+      <p>Dadju & Tayc - I Love You</p>
+      <div class="player-card">
+        <div class="vinyl">
+          <div class="vinyl-center"></div>
+        </div>
+        <h3>I Love You ❤️</h3>
+        <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 5px;">Dadju & Tayc</p>
+        <audio controls style="width: 100%; margin-top: 15px;">
+          <source src="https://p.scdn.co/mp3-preview/75c2e5b01859bc06f0e75a6c1e13b82772594a00?cid=2582236965a9436696d74421b8b8d4f4" type="audio/mpeg">
+          Votre navigateur ne supporte pas l'audio.
+        </audio>
+      </div>
+      <button class="btn" onclick="showPage('page-menu')">← Retour au menu</button>
+    </div>
+
+    <!-- PAGE 5 : LETTRE D'AMOUR -->
+    <div id="page-letter" class="page">
+      <h2 style="margin-bottom: 15px;">Une lettre de mon cœur 💌</h2>
+      <div class="letter-paper">
+        Ma chère Halimé,<br><br>
+        Si je t'écris ces quelques lignes, c'est pour te prouver à quel point tu comptes énormément pour moi. C'est une simple preuve d'amour sincère et profonde.<br><br>
+        Avec toi, Esaïe a trouvé la paix, le sourire et le bonheur au quotidien. Merci d'illuminer ma vie et de partager ton affection avec moi.<br><br>
+        Je t'aime infiniment,<br>
+        Ton amour, Esaïe. ❤️
+      </div>
+      <button class="btn" onclick="showPage('page-menu')">← Retour au menu</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Code secret défini sur 2580
+    const SECRET_CODE = "2580";
+    let currentInput = "";
+
+    function pressKey(num) {
+      if (currentInput.length < 4) {
+        currentInput += num;
+        updateDisplay();
+      }
+    }
+
+    function clearCode() {
+      currentInput = "";
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const display = document.getElementById("code-display");
+      display.textContent = currentInput.padEnd(4, "_");
+    }
+
+    function checkCode() {
+      if (currentInput === SECRET_CODE) {
+        showPage("page-menu");
+      } else {
+        alert("Code incorrect ! Réessaie mon cœur 🩷");
+        clearCode();
+      }
+    }
+
+    function showPage(pageId) {
+      document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+      });
+      document.getElementById(pageId).classList.add("active");
+    }
+  </script>
+</body>
+</html>
